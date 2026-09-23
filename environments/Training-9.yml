@@ -1,0 +1,11 @@
+fileVersion: 1
+id: "9"
+mappingDefinitions:
+  SRC:
+    database: COALSECE_WORKSHOP
+    schema: RAW_ECOM
+  TGT:
+    database: COALSECE_WORKSHOP
+    schema: STAGE_ECOM
+name: Training
+type: Environment

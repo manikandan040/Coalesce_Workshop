@@ -1,0 +1,138 @@
+fileVersion: 1
+id: 29a72aa4-8e88-4af7-b0cf-0cbef37c1272
+name: STG_REVIEWS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TGT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4094d55b-30d1-4a09-bb0e-3de3cae038a2
+          stepCounter: 29a72aa4-8e88-4af7-b0cf-0cbef37c1272
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: REVIEW_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 637fdff1-1e25-4649-8a72-95869ac487fb
+                stepCounter: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f6384a83-5981-497a-8daa-219e469ddd8f
+          stepCounter: 29a72aa4-8e88-4af7-b0cf-0cbef37c1272
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: ORDER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b3161c54-758f-4a45-b24f-3befae5912cb
+                stepCounter: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3415ac46-677e-42e8-9631-fdba8e79da13
+          stepCounter: 29a72aa4-8e88-4af7-b0cf-0cbef37c1272
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: PRODUCT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 656630b8-cc2b-45a3-a8f7-227d59331e01
+                stepCounter: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c178bed-fa50-4780-b9ad-2338af7053d1
+          stepCounter: 29a72aa4-8e88-4af7-b0cf-0cbef37c1272
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e2ad4cdb-ad38-4960-bf20-ee92b4f505d8
+                stepCounter: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 17f8945f-b951-45d0-9aa5-249e6e7e33f9
+          stepCounter: 29a72aa4-8e88-4af7-b0cf-0cbef37c1272
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: RATING
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0babb213-5ea3-4f0a-91b4-698a198acfef
+                stepCounter: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3b7408d8-02d4-4f00-b4c3-872ea4e76aee
+          stepCounter: 29a72aa4-8e88-4af7-b0cf-0cbef37c1272
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: REVIEW_TEXT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1ac39c26-f994-4cf6-8292-9486ca23e585
+                stepCounter: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: da7d5364-8fb4-45f7-a5db-0b2323c6ed38
+          stepCounter: 29a72aa4-8e88-4af7-b0cf-0cbef37c1272
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: REVIEW_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1fe8d3f7-bb8f-4904-ac30-fc3c723b3aa6
+                stepCounter: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          REVIEWS: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: REVIEWS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'REVIEWS') }} "REVIEWS"
+        name: STG_REVIEWS
+        noLinkRefs: []
+  name: STG_REVIEWS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
