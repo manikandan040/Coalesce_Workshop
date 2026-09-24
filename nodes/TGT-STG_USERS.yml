@@ -1,0 +1,124 @@
+fileVersion: 1
+id: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+name: STG_USERS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TGT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0bbb8ae2-6bc1-45eb-8627-1d308d49bf0b
+          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c81c7dff-61bb-4fbb-beeb-de18b61435e7
+                stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fb70a3d2-b90a-4c64-a9ec-f124b35fbe8c
+          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c90ca260-17b6-42c7-9e80-b781ddacb9d6
+                stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2673f694-83d9-4aab-a78c-9a13f5d3a869
+          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 46774de9-b71e-46fc-913e-87715a93ff9d
+                stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 35369b85-2e34-4a97-9c3a-ab144517514a
+          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: GENDER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 37b474d5-68a2-4493-bf72-4a51ea2b1a63
+                stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8a2484ea-b8c5-4ebf-94ea-a33fb97e7d85
+          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 134040d1-c045-4cfd-8043-8db512439505
+                stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 622ce51a-c952-4566-bc0c-4b299b3fb905
+          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SIGNUP_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9077d6da-d839-4b95-8e3e-a2bba512ea95
+                stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          USERS: 93717c3b-2fac-4505-aa63-2c3677ac4993
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC
+            nodeName: USERS
+        join:
+          joinCondition: FROM {{ ref('SRC', 'USERS') }} "USERS"
+        name: STG_USERS
+        noLinkRefs: []
+  name: STG_USERS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
