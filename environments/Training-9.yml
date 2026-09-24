@@ -6,6 +6,6 @@ mappingDefinitions:
     schema: RAW_ECOM
   TGT:
     database: COALSECE_WORKSHOP
-    schema: STAGE_ECOM
+    schema: TRAINING
 name: Training
 type: Environment
