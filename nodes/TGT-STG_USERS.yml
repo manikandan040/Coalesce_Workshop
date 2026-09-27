@@ -17,7 +17,8 @@ operation:
   metadata:
     appliedNodeTests: []
     columns:
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          isDistinct: false
         columnReference:
           columnCounter: 0bbb8ae2-6bc1-45eb-8627-1d308d49bf0b
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
@@ -31,7 +32,8 @@ operation:
               - columnCounter: c81c7dff-61bb-4fbb-beeb-de18b61435e7
                 stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          isDistinct: false
         columnReference:
           columnCounter: fb70a3d2-b90a-4c64-a9ec-f124b35fbe8c
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
@@ -44,8 +46,9 @@ operation:
           - columnReferences:
               - columnCounter: c90ca260-17b6-42c7-9e80-b781ddacb9d6
                 stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
-            transform: ""
-      - appliedColumnTests: {}
+            transform: UPPER(TRIM(name))
+      - appliedColumnTests:
+          isDistinct: false
         columnReference:
           columnCounter: 2673f694-83d9-4aab-a78c-9a13f5d3a869
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
@@ -58,8 +61,9 @@ operation:
           - columnReferences:
               - columnCounter: 46774de9-b71e-46fc-913e-87715a93ff9d
                 stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
-            transform: ""
-      - appliedColumnTests: {}
+            transform: LOWER(TRIM(email))
+      - appliedColumnTests:
+          isDistinct: false
         columnReference:
           columnCounter: 35369b85-2e34-4a97-9c3a-ab144517514a
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
@@ -73,7 +77,8 @@ operation:
               - columnCounter: 37b474d5-68a2-4493-bf72-4a51ea2b1a63
                 stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          isDistinct: false
         columnReference:
           columnCounter: 8a2484ea-b8c5-4ebf-94ea-a33fb97e7d85
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
@@ -86,8 +91,9 @@ operation:
           - columnReferences:
               - columnCounter: 134040d1-c045-4cfd-8043-8db512439505
                 stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
-            transform: ""
-      - appliedColumnTests: {}
+            transform: COALESCE(city, 'UNKNOWN')
+      - appliedColumnTests:
+          isDistinct: false
         columnReference:
           columnCounter: 622ce51a-c952-4566-bc0c-4b299b3fb905
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
@@ -101,8 +107,34 @@ operation:
               - columnCounter: 9077d6da-d839-4b95-8e3e-a2bba512ea95
                 stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
             transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 110ea147-c5d0-47ea-95ee-2312cc805b1e
+          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CUSTOMER_STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              CASE
+                WHEN signup_date IS NULL THEN 'UNKNOWN'
+                WHEN signup_date < DATEADD(year, -2, CURRENT_DATE()) THEN 'MATURE'
+                ELSE 'NEW'
+              END
+        systemColumnType: None
     cteString: ""
-    enabledColumnTestIDs: []
+    enabledColumnTestIDs:
+      - isDistinct
     sourceMapping:
       - aliases:
           USERS: 93717c3b-2fac-4505-aa63-2c3677ac4993

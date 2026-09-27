@@ -1,0 +1,225 @@
+fileVersion: 1
+id: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+name: STG_ORDERS_USERS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: TGT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 677dde8d-a4ab-4816-bf20-36303e205b0f
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: ORDER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e0ac5c59-0262-4109-a1d9-46a7b8c09a2a
+                stepCounter: 57ee78e1-505c-47fc-8158-37a9dab441be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16952b44-ef81-4436-bda9-de449356ba9c
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: USER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7fcf0dd9-034e-4b71-af41-d20b2e9702a1
+                stepCounter: 57ee78e1-505c-47fc-8158-37a9dab441be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8cf49e0a-1f27-4483-b5e6-9b63bf0aed86
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: ORDER_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 63feed32-6db9-4803-80b8-dc4ffd2c1fc5
+                stepCounter: 57ee78e1-505c-47fc-8158-37a9dab441be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b0e04133-12a6-4bf7-b330-04c52e0fd387
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: ORDER_STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b18afa17-116c-4036-b4e8-066eec4b9eea
+                stepCounter: 57ee78e1-505c-47fc-8158-37a9dab441be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a24c925c-8688-4d06-8e39-c9473f30880e
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        name: TOTAL_AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6e63af06-bcac-44ec-bdb8-685dae92ccde
+                stepCounter: 57ee78e1-505c-47fc-8158-37a9dab441be
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 617fd9e0-80d4-4b9e-91e9-338ec0381424
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fb70a3d2-b90a-4c64-a9ec-f124b35fbe8c
+                stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b89ceb58-6348-4ed5-9094-24c79c7ffbc8
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: EMAIL
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2673f694-83d9-4aab-a78c-9a13f5d3a869
+                stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 91da97ad-c23b-4d7c-a2f6-744685b9eba7
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: GENDER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 35369b85-2e34-4a97-9c3a-ab144517514a
+                stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: af3a52ab-4f79-45ff-81e3-b22d22c525f3
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8a2484ea-b8c5-4ebf-94ea-a33fb97e7d85
+                stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ede6de50-2b4f-4f22-bc8d-162e0c12fdd0
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SIGNUP_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 622ce51a-c952-4566-bc0c-4b299b3fb905
+                stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0d42eda5-97b2-4a39-be41-c6185846bbd6
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CUSTOMER_STATUS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 110ea147-c5d0-47ea-95ee-2312cc805b1e
+                stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 56eb5776-0a50-43b6-8216-e4a392c7802b
+          stepCounter: 7370156a-030c-4e81-baa2-b57b4ab29e6d
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: ORDER_CUSTOMER_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: |
+              CASE
+                WHEN customer_status = 'MATURE' THEN 'EXISTING'
+                WHEN customer_status = 'NEW' THEN 'NEW'
+                ELSE 'UNKNOWN'
+              END 
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_ORDERS: 57ee78e1-505c-47fc-8158-37a9dab441be
+          STG_USERS: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: TGT
+            nodeName: STG_ORDERS
+          - locationName: TGT
+            nodeName: STG_USERS
+        join:
+          joinCondition: |-
+            FROM {{ ref('TGT', 'STG_ORDERS') }} "STG_ORDERS"
+            INNER JOIN {{ ref('TGT', 'STG_USERS') }} "STG_USERS"
+            ON "STG_ORDERS".USER_ID = "STG_USERS"."USER_ID"
+        name: STG_ORDERS_USERS
+        noLinkRefs: []
+  name: STG_ORDERS_USERS
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

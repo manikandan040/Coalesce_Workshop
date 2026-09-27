@@ -116,7 +116,10 @@ operation:
                 stepCounter: 099202c3-fb19-43ec-ab34-110a546ea57a
             transform: ""
     cteString: ""
+    description: ""
+    destinationName: ""
     enabledColumnTestIDs: []
+    materializationOption: ""
     sourceMapping:
       - aliases:
           ORDER_ITEMS: 099202c3-fb19-43ec-ab34-110a546ea57a
@@ -126,7 +129,9 @@ operation:
           - locationName: SRC
             nodeName: ORDER_ITEMS
         join:
-          joinCondition: FROM {{ ref('SRC', 'ORDER_ITEMS') }} "ORDER_ITEMS"
+          joinCondition: |-
+            FROM {{ ref('SRC', 'ORDER_ITEMS') }} "ORDER_ITEMS"
+            WHERE "ORDER_ITEMS".QUANTITY > 0
         name: STG_ORDER_ITEMS
         noLinkRefs: []
   name: STG_ORDER_ITEMS
