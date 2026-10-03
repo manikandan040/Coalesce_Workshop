@@ -47,4 +47,4 @@ coa refresh --environmentID [ENV_ID] --jobID [JOB_ID]
 
 ## Contacts
 
-Owner: `[NAME / TEAM]`  |  Channel: `[#SLACK_CHANNEL]`
+Owner: `MANIKANDAN S`  |  Channel: `SYSTECH SOLUTIONS`
