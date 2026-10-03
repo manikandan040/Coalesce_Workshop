@@ -100,7 +100,7 @@ operation:
           - columnReferences:
               - columnCounter: 1ac39c26-f994-4cf6-8292-9486ca23e585
                 stepCounter: fb3e90fd-0ca9-462c-90dc-7f5ba20a7f2a
-            transform: ""
+            transform: TRIM(REVIEW_TEXT)
       - appliedColumnTests: {}
         columnReference:
           columnCounter: da7d5364-8fb4-45f7-a5db-0b2323c6ed38
