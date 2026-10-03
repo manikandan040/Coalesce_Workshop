@@ -13,12 +13,56 @@ operation:
   locationName: TGT
   materializationType: table
   metadata:
-    appliedNodeTests: []
+    appliedNodeTests:
+      - continueOnFailure: true
+        description: ""
+        name: Customer_Inactive
+        runOrder: Before
+        templateString: |-
+          SELECT *
+          FROM
+          {{ ref_no_link('TGT','DIM_CUSTOMER')}}
+          where user_id is null
+      - continueOnFailure: true
+        description: ""
+        name: Customer Null Check
+        runOrder: After
+        templateString: |-
+          SELECT *
+          FROM
+          {{ ref_no_link('TGT','DIM_CUSTOMER')}}
+          where user_id is null
+      - continueOnFailure: true
+        description: ""
+        name: Customer_Duplicate_Keys
+        runOrder: After
+        templateString: |-
+          SELECT user_id, COUNT(*) AS cnt
+          FROM {{ ref_no_link('TGT','DIM_CUSTOMER')}}
+          GROUP BY user_id
+          HAVING COUNT(*) > 1
+      - continueOnFailure: true
+        description: ""
+        name: Negative Sales
+        runOrder: After
+        templateString: |-
+          SELECT *
+          FROM {{ ref_no_link('TGT','FACT_SALES')}}
+          WHERE line_amount < 0
+      - continueOnFailure: true
+        description: ""
+        name: Orphan Records
+        runOrder: After
+        templateString: |-
+          SELECT *
+          FROM {{ ref_no_link('TGT','FACT_SALES')}} f
+          LEFT JOIN {{ ref_no_link('TGT','DIM_CUSTOMER')}} d
+            ON f.user_id = d.user_id
+          WHERE d.user_id IS NULL
     columns:
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: true
+          isDistinct: true
         columnReference:
           columnCounter: 2d6b7009-b966-40d9-a5fb-c7d016866754
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -32,7 +76,9 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: true
+          isDistinct: true
         columnReference:
           columnCounter: 9a97fe3d-8cb8-45fb-8824-f5c6fb52f295
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -47,7 +93,9 @@ operation:
               - columnCounter: 0bbb8ae2-6bc1-45eb-8627-1d308d49bf0b
                 stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: 04776986-40ee-4b45-95f7-9a7fd4c4eec8
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -61,7 +109,9 @@ operation:
               - columnCounter: fb70a3d2-b90a-4c64-a9ec-f124b35fbe8c
                 stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: ec28bc34-973f-436e-a7c0-b17393e3c1bc
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -75,7 +125,9 @@ operation:
               - columnCounter: 2673f694-83d9-4aab-a78c-9a13f5d3a869
                 stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: 16ab123b-babc-4b59-8d58-af25b166f389
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -89,7 +141,9 @@ operation:
               - columnCounter: 35369b85-2e34-4a97-9c3a-ab144517514a
                 stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: b1c50f24-017d-46b7-8687-a41d1ddf9877
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -103,7 +157,9 @@ operation:
               - columnCounter: 8a2484ea-b8c5-4ebf-94ea-a33fb97e7d85
                 stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: dee3d86b-87af-4abe-8a44-7f2bdf7c4076
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -117,7 +173,9 @@ operation:
               - columnCounter: 622ce51a-c952-4566-bc0c-4b299b3fb905
                 stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
             transform: ""
-      - appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: 084b05e3-80ff-4087-8f3a-a114ce6c8798
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -131,10 +189,9 @@ operation:
               - columnCounter: 110ea147-c5d0-47ea-95ee-2312cc805b1e
                 stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: cbce9fc2-8a04-4978-9c56-9a5a129935c0
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -148,10 +205,9 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: 49d9252b-5db3-4f5d-b6a7-40f503b16fbc
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -165,10 +221,9 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: ""
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: 30869906-243e-411c-bfb7-bc65f10e1e8f
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -182,10 +237,9 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: 96985cec-72cd-4cf8-b99e-ae1cc9b13257
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -199,10 +253,9 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: 49380f74-7b1d-419e-a3fc-ce6e9820d52e
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -216,10 +269,9 @@ operation:
         sourceColumnReferences:
           - columnReferences: []
             transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
-      - acceptedValues:
-          strictMatch: true
-          values: []
-        appliedColumnTests: {}
+      - appliedColumnTests:
+          hasNull: false
+          isDistinct: false
         columnReference:
           columnCounter: c38aa118-9e7c-4052-ad7b-1f5fea6da787
           stepCounter: 1342b49b-612a-4200-966c-8541b1e96410
@@ -234,7 +286,12 @@ operation:
           - columnReferences: []
             transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
     cteString: ""
-    enabledColumnTestIDs: []
+    description: ""
+    destinationName: ""
+    enabledColumnTestIDs:
+      - hasNull
+      - isDistinct
+    materializationOption: ""
     sourceMapping:
       - aliases:
           STG_USERS: de282ac2-e084-4244-8d01-fa81dd7f1e2d

@@ -1,0 +1,37 @@
+{%- if node.materializationType == 'table' %}
+
+    {# --- Pre-SQL: one stage per occurrence --- #}
+    {%- for sql in config.preSQL | default([]) %}
+        {{ stage('Pre-SQL ' ~ loop.index) }}
+        {{ sql.parameters[0] }}
+    {%- endfor %}
+
+    {# --- Write mode: truncateInsert (default) or append --- #}
+    {%- set writeMode = config.writeMode.parameters[0] if config.writeMode is defined else 'truncateInsert' %}
+    {%- set insertMode = '' if writeMode == 'append' else 'OVERWRITE' %}
+
+    {{ stage('Load Table') }}
+    INSERT {{ insertMode }} INTO {{ ref_no_link(node.location.name, node.name) }}
+    (
+        {%- for col in sources[0].columns %}
+            "{{ col.name }}"{%- if not loop.last -%}, {%- endif %}
+        {%- endfor %}
+    )
+    {{ sources[0].cteString }}
+    SELECT {{ sources[0].selectModifier | default('', true) }}
+    {%- for col in sources[0].columns %}
+        {{ get_source_transform(col) }} AS "{{ col.name }}"{%- if not loop.last -%}, {%- endif %}
+    {%- endfor %}
+    {{ sources[0].join }}
+
+    {# --- Post-SQL --- #}
+    {%- for sql in config.postSQL | default([]) %}
+        {{ stage('Post-SQL ' ~ loop.index) }}
+        {{ sql.parameters[0] }}
+    {%- endfor %}
+
+{%- else %}
+    {{ stage('Load Skipped for View') }}
+    -- The node {{node.name}} is materialized as View. Therefore, a Load operation is not supported.
+    SELECT 1 AS INFO_MESSAGE WHERE FALSE
+{%- endif %}

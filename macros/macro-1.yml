@@ -1,0 +1,8 @@
+fileVersion: 1
+id: "1"
+macroString: |
+  {% macro null_safe_text(column_name) %}
+  COALESCE(TRIM({{ column_name }}), 'UNKNOWN')
+  {% endmacro %}
+name: macro
+type: Macro

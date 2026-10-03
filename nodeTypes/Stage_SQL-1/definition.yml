@@ -1,0 +1,40 @@
+fileVersion: 2
+id: "1"
+isDisabled: false
+metadata:
+  defaultStorageLocation: null
+  error: null
+  nodeMetadataSpec: |-
+    capitalized: New Type
+    short: NEW
+    tagColor: gray
+    plural: New Types
+
+    annotations:
+      node:
+        - name: writeMode
+          description: >-
+            How data is written to the target table. truncateInsert replaces the
+            contents; append adds rows. Defaults to truncateInsert when omitted.
+          parameters:
+            - name: mode
+              type: string
+              isRequired: true
+              default: truncateInsert
+              options: [truncateInsert, append]
+        - name: preSQL
+          description: SQL statement to run before the load. Repeat to run several, in order.
+          allowsMultiple: true
+          parameters:
+            - name: querySQL
+              type: string
+              isRequired: true
+        - name: postSQL
+          description: SQL statement to run after the load. Repeat to run several, in order.
+          allowsMultiple: true
+          parameters:
+            - name: querySQL
+              type: string
+              isRequired: true
+name: Stage_SQL
+type: NodeType
