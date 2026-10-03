@@ -24,7 +24,7 @@ operation:
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
         config: {}
         dataType: VARCHAR(16777216)
-        description: ""
+        description: User identifier from the source `USERS` table. This column is a primary key for this table. It is used for user-centric analytics, personalization, and linking to other user-related data such as orders and activity logs. The value is sourced directly from the `USERS.USER_ID` column without any transformations. This identifier facilitates tracking individual user journeys and aggregating user-specific metrics across the platform.
         name: USER_ID
         nullable: true
         sourceColumnReferences:
@@ -39,7 +39,7 @@ operation:
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
         config: {}
         dataType: VARCHAR(16777216)
-        description: ""
+        description: User's full name, sourced from the `USERS.NAME` column. This data supports customer communication, display in user interfaces, and internal reporting. A transformation applies `UPPER(TRIM(name))` to standardize the format, ensuring consistency by removing leading/trailing spaces and converting all characters to uppercase. This standardization aids in data quality and simplifies string comparisons in analytical queries. No direct key relationships exist for this column.
         name: NAME
         nullable: true
         sourceColumnReferences:
@@ -54,7 +54,7 @@ operation:
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
         config: {}
         dataType: VARCHAR(16777216)
-        description: ""
+        description: User's email address, originating from the `USERS.EMAIL` column. This column is used for direct communication, account recovery processes, and targeted marketing campaigns. A transformation applies `LOWER(TRIM(email))` to standardize the email format, removing leading/trailing spaces and converting all characters to lowercase. This ensures data consistency and facilitates accurate matching and deduplication of user records. No direct key relationships exist for this column.
         name: EMAIL
         nullable: true
         sourceColumnReferences:
@@ -65,26 +65,11 @@ operation:
       - appliedColumnTests:
           isDistinct: false
         columnReference:
-          columnCounter: 35369b85-2e34-4a97-9c3a-ab144517514a
-          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
-        config: {}
-        dataType: VARCHAR(16777216)
-        description: ""
-        name: GENDER
-        nullable: true
-        sourceColumnReferences:
-          - columnReferences:
-              - columnCounter: 37b474d5-68a2-4493-bf72-4a51ea2b1a63
-                stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
-            transform: ""
-      - appliedColumnTests:
-          isDistinct: false
-        columnReference:
           columnCounter: 8a2484ea-b8c5-4ebf-94ea-a33fb97e7d85
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
         config: {}
         dataType: VARCHAR(16777216)
-        description: ""
+        description: User's city of residence, sourced from the `USERS.CITY` column. This data enables geographic segmentation for localized services, regional marketing efforts, and logistical planning. A `COALESCE(city, 'UNKNOWN')` transformation replaces any null values with the string 'UNKNOWN', ensuring no missing city data in downstream reports. This standardization improves data completeness for location-based analytics. No direct key relationships exist for this column.
         name: CITY
         nullable: true
         sourceColumnReferences:
@@ -99,7 +84,7 @@ operation:
           stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
         config: {}
         dataType: DATE
-        description: ""
+        description: The date when the user registered, sourced directly from the `USERS.SIGNUP_DATE` column. This column is fundamental for customer lifecycle analysis, cohort tracking, and calculating customer tenure. It serves as a basis for deriving other time-based metrics and customer segments. No transformations are applied to the source date value. This date is also used in the derivation of the `CUSTOMER_STATUS` column, indicating user longevity.
         name: SIGNUP_DATE
         nullable: true
         sourceColumnReferences:
@@ -117,7 +102,7 @@ operation:
         config: {}
         dataType: VARCHAR(16777216)
         defaultValue: ""
-        description: ""
+        description: Categorization of a user's tenure, derived from the `SIGNUP_DATE` column. This column supports targeted marketing campaigns, churn prediction models, and customer segmentation based on their lifecycle stage. A `CASE` statement assigns 'UNKNOWN' if `SIGNUP_DATE` is null, 'MATURE' if signup is over two years ago, and 'NEW' otherwise. This system-generated status provides a dynamic classification for user engagement strategies.
         keyColumnType: None
         name: CUSTOMER_STATUS
         nullable: true
@@ -131,6 +116,26 @@ operation:
                 WHEN signup_date < DATEADD(year, -2, CURRENT_DATE()) THEN 'MATURE'
                 ELSE 'NEW'
               END
+        systemColumnType: None
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 716feecc-c813-4542-aaf3-735a54f14e2a
+          stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
+        config: {}
+        dataType: VARCHAR(1677216)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: GENDER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 37b474d5-68a2-4493-bf72-4a51ea2b1a63
+                stepCounter: 93717c3b-2fac-4505-aa63-2c3677ac4993
+            transform: ""
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs:

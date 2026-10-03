@@ -126,7 +126,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences:
-              - columnCounter: 35369b85-2e34-4a97-9c3a-ab144517514a
+              - columnCounter: 716feecc-c813-4542-aaf3-735a54f14e2a
                 stepCounter: de282ac2-e084-4244-8d01-fa81dd7f1e2d
             transform: ""
       - appliedColumnTests: {}

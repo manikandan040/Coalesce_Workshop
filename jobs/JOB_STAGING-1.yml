@@ -1,0 +1,6 @@
+excludeSelector: ""
+fileVersion: 1
+id: "1"
+includeSelector: "{ location: \"TGT\" name: \"STG_ORDER_ITEMS\" } OR { location: \"TGT\" name: \"STG_ORDER_ITEMS_PRODUCTS\" } OR { location: \"TGT\" name: \"STG_ORDER_ITEMS_PRODUCTS_CUSTOMER\" } OR { location: \"TGT\" name: \"STG_ORDERS\" } OR { location: \"TGT\" name: \"STG_ORDERS_USERS\" } OR { location: \"TGT\" name: \"STG_PRODUCTS\" } OR { location: \"TGT\" name: \"STG_REVIEWS\" } OR { location: \"TGT\" name: \"STG_USERS\" }"
+name: JOB_STAGING
+type: Job

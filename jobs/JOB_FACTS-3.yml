@@ -1,0 +1,6 @@
+excludeSelector: ""
+fileVersion: 1
+id: "3"
+includeSelector: "{ location: \"TGT\" name: \"FACT_SALES\" }"
+name: JOB_FACTS
+type: Job
