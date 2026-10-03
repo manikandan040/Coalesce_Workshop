@@ -112,7 +112,7 @@ operation:
                 stepCounter: "0"
             transform: |
               CASE
-                WHEN signup_date IS NULL THEN 'UNKNOWN'
+                WHEN signup_date IS NNULL THEN 'UNKNOWN'
                 WHEN signup_date < DATEADD(year, -2, CURRENT_DATE()) THEN 'MATURE'
                 ELSE 'NEW'
               END
